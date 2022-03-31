@@ -16,12 +16,70 @@ function user(){
     }while(userAnswer == "yes")
     return userTotal
 }
+function computer(){
+    var computerTotal = random()
+    do{
+        computerTotal = computerTotal + random()
+        console.log(computerTotal)
+        if (computerTotal < 16){
+            computerAnswer = "yes"
+        }else{
+            computerAnswer = "no"
+        }
+    }while(computerAnswer == "yes")
+    return computerTotal
+}
+function comparing(){
+    var compwins = 0
+    var userwins = 0
+    var play;
+    do{
+        var usernum = user()
+        var num = computer()
+        if (usernum > 20){
+            alert(`Sorry you lost by going over 20`)
+            play = prompt(`Right now the score is ${compwins} computer and ${userwins} you. Would you like to play again please type "yes" or "no."`)
+            num = 0
+            usernum = 0
+        }else if (num > 20){
+            alert(`Congrats! You won the computer went over 20.`)
+            userwins ++
+            console.log("userwins" + userwins)
+            play = prompt(`Right now the score is ${compwins} computer and ${userwins} you. Would you like to play again please type "yes" or "no."`)
+            num = 0
+            usernum = 0
+        }
+        else if (num > usernum){
+            alert(`Computer Wins! It's number was hgiher than yours.`)
+            compwins ++;
+            console.log("compwins" + compwins)
+            play = prompt(`Right now the score is ${compwins} computer and ${userwins} you. Would you like to play again please type "yes" or "no."`)
+            num = 0
+            usernum = 0
+        }else if(usernum > num){
+            alert(`You Win! Your number was hgiher than the computers.`)
+            userwins ++
+            console.log("userwins" + userwins)
+            play = prompt(`Right now the score is ${compwins} computer and ${userwins} you. Would you like to play again please type "yes" or "no."`)
+            num = 0
+            usernum = 0
+        }else if(usernum = num){
+            alert(`You tied with the computer, no one wins a point this time`)
+            play = prompt(`Right now the score is ${compwins} computer and ${userwins} you. Would you like to play again please type "yes" or "no."`)
+            num = 0
+            usernum = 0
+        }
+    }while(play == "yes")
+
+    alert(`Thank you for playing! The final score was ${compwins} computer and ${userwins} you. Goodbye`)
+}
+
 
 
 
 function program(){
     alert(`Hello ${askName()} I hope you are ready to play some twenty, because we will be starting soon. `)
-    user()
+    comparing()
 }
 
 program()
